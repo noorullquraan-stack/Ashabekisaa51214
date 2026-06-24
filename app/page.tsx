@@ -1,65 +1,118 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const languages = [
+    {
+      name: "عربی",
+      flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1780906530/iraq_aeukuq.gif",
+      href: "/ar/map"
+    },
+    {
+      name: "اردو",
+      flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1780906529/Pakistan_y2zwci.gif",
+      href: "/ur/map"
+    },
+    {
+      name: "فارسی",
+      flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1780906527/Iran_rtdncz.gif",
+      href: "/fa/map"
+    },
+    {
+      name: "English",
+      flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1780906499/England_q4tw1a.gif",
+      href: "/en/map"
+    }
+  ];
+
+  // Updated animation with longer distance (100px) and slightly slower speed
+  const animationStyles = `
+    @keyframes slideIn {
+      from { 
+        opacity: 0; 
+        transform: translateX(100px) scale(0.8); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0) scale(1); 
+      }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  `;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center p-4 text-slate-100 font-sans">
+      <style dangerouslySetInnerHTML={{ __html: animationStyles }} />
+
+      {/* Main Container */}
+      <div className="flex flex-col items-center gap-4 w-full max-w-3xl">
+
+        {/* Video Section */}
+        <div className="w-full rounded-xl overflow-hidden shadow-2xl">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto block"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <source src="https://res.cloudinary.com/dmqej8n4z/video/upload/q_auto/f_auto/v1781768070/landing-page_xfcqu1.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </main>
+
+        {/* Language Bar */}
+        <div className="w-full flex justify-center z-20 mt-1">
+          <div className="flex justify-center gap-3 md:gap-5">
+            {languages.map((lang, index) => (
+              <Link
+                key={lang.name}
+                href={lang.href}
+                className="flex flex-col items-center gap-1 group cursor-pointer will-change-transform"
+                style={{
+                  // Increased duration to 0.8s for the long slide
+                  animation: `slideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.12}s backwards, float 3.5s ease-in-out ${1 + index * 0.2}s infinite`
+                }}
+              >
+                <div className="relative">
+                  <div className="w-9 h-9 md:w-11 md:h-11 relative overflow-hidden rounded-full shadow-[0_0_10px_rgba(255,215,0,0.2)] group-hover:shadow-[0_0_18px_rgba(255,215,0,0.6)] group-hover:scale-110 transition-all duration-300 will-change-transform">
+                    <Image
+                      src={lang.flag}
+                      alt={lang.name}
+                      fill
+                      sizes="(max-width: 768px) 36px, 44px"
+                      className="object-cover scale-125"
+                      quality={85}
+                      unoptimized
+                    />
+                  </div>
+                </div>
+
+                <span
+                  className={`
+                    font-bold transition-colors duration-300 drop-shadow-md
+                    ${['عربی', 'اردو', 'فارسی'].includes(lang.name) ? 'tracking-tight text-sm md:text-base' : 'tracking-wide text-xs md:text-sm'}
+                    text-zinc-300 group-hover:text-gold
+                  `}
+                  style={{
+                    animation: `fadeIn 0.5s ease-out ${0.5 + index * 0.1}s backwards`
+                  }}
+                >
+                  {lang.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+      </div>
     </div>
   );
-}
+} 

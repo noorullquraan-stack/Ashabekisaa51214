@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>╪º┘ü╪▒█î┘é╪º ┌⌐█Æ ┌»┘ê┘ä┌ê┘å ┘à┘à╪º┘ä┌⌐</title>
+    <style>
+        /* ╪╣┘à┘ê┘à█î ╪│█î┘╣┘å┌»╪▓ */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Nastaliq Urdu', 'Arial', serif; /* ╪º╪▒╪»┘ê ┘ü┘ê┘å┘╣ */
+            background-color: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* ┘ä█î┘å┌ê┘å┌» ┘╛█î╪¼ ╪º╪│┘╣╪º╪ª┘ä */
+        #landing-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+
+        .landing-content {
+            text-align: center;
+        }
+
+        .lang-btn {
+            padding: 15px 40px;
+            font-size: 24px;
+            background-color: #ffd700; /* ┌»┘ê┘ä┌ê┘å ╪▒┘å┌» */
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        /* ┘ê█î┌ê█î┘ê ┌⌐┘å┘╣█î┘å╪▒ */
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        #video-container.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ┘à█î┘╛ ┘╛█î┘å┘ä */
+        #map-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: #f0f0f0; /* ╪¿█î┌⌐ ┌»╪▒╪º╪ñ┘å┌ê ┘à█î┘╛ ┌⌐█Æ ┘ä█î█Æ */
+            display: none; /* ┘╛█ü┘ä█Æ ┌å┌╛┘╛╪º █ü┘ê╪º */
+            overflow: hidden;
+        }
+
+        /* ┘à█î┘╛ ╪¿█î┌⌐ ┌»╪▒╪º╪ñ┘å┌ê (┌ê█î┘à█î┘ê ┘à█î┘╛ █î╪º ╪¬╪╡┘ê█î╪▒) */
+        .map-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3; /* ┘╛█î┌å┌╛█Æ ┌⌐╪º ┘à█î┘╛ █ü┘ä┌⌐╪º ╪»┌⌐┌╛╪º╪ª█î┌║ */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Africa_relief_location_map.jpg/1000px-Africa_relief_location_map.jpg'); /* ┘à╪½╪º┘ä ┌⌐█Æ ╪╖┘ê╪▒ ┘╛╪▒ ┘à█î┘╛ */
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        /* ┌»┘ê┘ä┌ê┘å ┘à┘à╪º┘ä┌⌐ */
+        .gold-country {
+            position: absolute;
+            background-color: #ffd700; /* ┌»┘ê┘ä┌ê┘å */
+            border: 2px solid #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; /* ╪┤╪▒┘ê╪╣ ┘à█î┌║ ┘å╪╕╪▒ ┘å█ü ╪ó╪ª█î┌║ */
+            transform: scale(0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-weight: bold;
+            text-shadow: 0 0 2px #fff;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* █ü╪º┘ê╪▒ ╪º█î┘ü█î┌⌐┘╣ */
+        .gold-country:hover {
+            transform: scale(1.4) !important; /* ┌⌐┘ä┌⌐ ┘╛╪▒ ╪¿┌æ╪º █ü┘ê ╪¼╪º╪ª█Æ */
+            z-index: 100;
+            background-color: #ffea00;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+        }
+
+        /* ┘╣┘ê┘╣┘ä ┘╛╪º┘╛ ╪º┘╛ (╪¬┘ü╪╡█î┘ä) */
+        #detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #detail-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 4px solid #ffd700;
+            transform: translateY(50px);
+            transition: transform 0.5s ease;
+        }
+
+        #detail-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* ╪º█î┘å█î┘à█î╪┤┘å ┌⌐┘ä╪º╪│╪▓ */
+        .pop-in {
+            animation: popIn 1s forwards;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. ┘ä█î┘å┌ê┘å┌» ┘╛█î╪¼ -->
+    <div id="landing-page">
+        <div class="landing-content">
+            <h1 style="font-size: 40px; margin-bottom: 30px;">╪«┘ê╪┤ ╪ó┘à╪»█î╪»</h1>
+            <button class="lang-btn" onclick="startExperience()">╪º╪▒╪»┘ê ┘à┘å╪¬╪«╪¿ ┌⌐╪▒█î┌║</button>
+        </div>
+    </div>
+
+    <!-- 2. ┘ê█î┌ê█î┘ê ┌⌐┘å┘╣█î┘å╪▒ -->
+    <div id="video-container">
+        <video id="main-video" loop>
+            <source src="https://res.cloudinary.com/dmqej8n4z/video/upload/v1781680531/new_vrkw85.webm" type="video/webm">
+            ╪ó┘╛ ┌⌐╪º ╪¿╪▒╪º╪ñ╪▓╪▒ ┘ê█î┌ê█î┘ê ╪│┘╛┘ê╪▒┘╣ ┘å█ü█î┌║ ┌⌐╪▒╪¬╪º█ö
+        </video>
+    </div>
+
+    <!-- 3. ┘à█î┘╛ ╪│█î┌⌐╪┤┘å -->
+    <div id="map-section">
+        <div class="map-bg"></div>
+        <!-- ┘à┘à╪º┘ä┌⌐ █î█ü╪º┌║ ╪¼█î ╪º█î╪│ ╪º┘ê ╪│█î ╪º┘ê┌ê ┌⌐█Æ ╪░╪▒█î╪╣█Æ ╪┤╪º┘à┘ä █ü┘ê┌║ ┌»█Æ -->
+    </div>
+
+    <!-- 4. ╪¬┘ü╪╡█î┘ä█î ╪╡┘ü╪¡█ü (┘à╪º┌ê┘ä) -->
+    <div id="detail-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDetail()">&times;</span>
+            <h2 id="modal-title">┘à┘ä┌⌐ ┌⌐╪º ┘å╪º┘à</h2>
+            <p id="modal-desc">█î█ü╪º┌║ ┘à┘ä┌⌐ ┌⌐█î ╪¬┘ü╪╡█î┘ä╪º╪¬ ┘ä┌⌐┌╛█î ╪¼╪º╪ª█î┌║ ┌»█î█ö</p>
+        </div>
+    </div>
+
+    <script>
+        // ┌ê█î┘╣╪º: ┘à┘à╪º┘ä┌⌐ ┌⌐█Æ ┘å╪º┘à ╪º┘ê╪▒ ╪º┘å╪»╪º╪▓ (╪¿█ü╪¬╪▒█î┘å ╪»█î┌⌐┌╛┘å█Æ ┌⌐█Æ ┘ä█î█Æ ┘╛┘ê╪▓█î╪┤┘å % ┘à█î┌║)
+        // ┘å┘ê┘╣: █î█ü ┘╛┘ê╪▓█î╪┤┘å╪▓ ╪¬╪«┘à█î┘å█ü █ü█î┌║╪î ╪ó┘╛ ╪º┘╛┘å█Æ ┘å┘é╪┤█Æ ┌⌐█Æ ┘à╪╖╪º╪¿┘é ╪º┘å█ü█î┌║ ╪¬╪¿╪»█î┘ä ┌⌐╪▒ ╪│┌⌐╪¬█Æ █ü█î┌║█ö
+        const countriesData = [
+            { name: "┘å╪º╪ª╪¼╪▒", top: "50%", left: "35%", width: "100px", height: "120px" },
+            { name: "┘å╪º╪ª█î╪¼█î╪▒█î╪º", top: "60%", left: "40%", width: "120px", height: "100px" },
+            { name: "╪¬┘å╪▓╪º┘å█î█ü", top: "75%", left: "65%", width: "100px", height: "130px" },
+            { name: "┌⌐█î┘à╪▒┘ê┘å", top: "55%", left: "45%", width: "60px", height: "90px" },
+            { name: "╪¿╪▒┌⌐┘å╪º ┘ü╪º╪│┘ê", top: "45%", left: "30%", width: "80px", height: "100px" },
+            { name: "╪ó╪ª█î┘ê╪▒█î ┌⌐┘ê╪│┘╣", top: "55%", left: "25%", width: "60px", height: "90px" },
+            { name: "┌»┘å█î ╪¿╪│╪º╪ñ", top: "50%", left: "20%", width: "70px", height: "80px" }
+        ];
+
+        // ┘ê█î┌ê█î┘ê ╪º┘ê╪▒ ┌ê┘ê┘à ╪╣┘å╪º╪╡╪▒
+        const landingPage = document.getElementById('landing-page');
+        const videoContainer = document.getElementById('video-container');
+        const videoElement = document.getElementById('main-video');
+        const mapSection = document.getElementById('map-section');
+        const modal = document.getElementById('detail-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        // ╪¬╪¼╪▒╪¿█ü ╪┤╪▒┘ê╪╣ ┌⌐╪▒┘å█Æ ┌⌐╪º ┘ü┘å┌⌐╪┤┘å
+        function startExperience() {
+            // 1. ┘ä█î┘å┌ê┘å┌» ┘╛█î╪¼ ┌⌐┘ê █ü╪º╪ª█î┌ê ┌⌐╪▒█î┌║
+            landingPage.style.opacity = '0';
+            setTimeout(() => {
+                landingPage.style.display = 'none';
+                
+                // 2. ┘ê█î┌ê█î┘ê ╪»┌⌐┌╛╪º╪ª█î┌║
+                videoContainer.style.display = 'flex';
+                // ╪¬┌╛┘ê┌æ╪º ╪º┘å╪¬╪╕╪º╪▒ ┌⌐╪▒█î┌║ ╪¬╪º┌⌐█ü ┌ê╪│┘╛┘ä█Æ ╪º┘╛┘ä╪º╪ª█î █ü┘ê ╪│┌⌐█Æ
+                setTimeout(() => {
+                    videoContainer.classList.add('active');
+                    videoElement.play();
+                }, 50);
+
+            }, 1000); // 1 ╪│█î┌⌐┘å┌ê ┌⌐█î ┘╣╪▒╪º┘å╪▓█î╪┤┘å
+        }
+
+        // ┘ê█î┌ê█î┘ê ╪«╪¬┘à █ü┘ê┘å█Æ ┘╛╪▒ ╪º█î┘ê┘å┘╣
+        videoElement.addEventListener('ended', () => {
+            // ┘ê█î┌ê█î┘ê ┌⌐┘ê █ü╪º╪ª█î┌ê ┌⌐╪▒█î┌║
+            videoContainer.classList.remove('active');
+            setTimeout(() => {
+                videoContainer.style.display = 'none';
+                showMap();
+            }, 1000);
+        });
+
+        // ┘à█î┘╛ ╪»┌⌐┌╛╪º┘å█Æ ┘ê╪º┘ä╪º ┘ü┘å┌⌐╪┤┘å
+        function showMap() {
+            mapSection.style.display = 'block';
+            
+            // ┘à┘à╪º┘ä┌⌐ ┌⌐┘ê ╪¿┘å╪º╪ª█î┌║
+            countriesData.forEach((country, index) => {
+                const el = document.createElement('div');
+                el.classList.add('gold-country');
+                el.innerText = country.name;
+                el.style.top = country.top;
+                el.style.left = country.left;
+                el.style.width = country.width;
+                el.style.height = country.height;
+                
+                // ╪º╪│┘╣█î┌⌐┌ê ╪º█î┘å█î┘à█î╪┤┘å (╪ó█ü╪│╪¬█ü ╪ó█ü╪│╪¬█ü ╪º╪¿┌╛╪▒█î┌║)
+                setTimeout(() => {
+                    el.classList.add('pop-in');
+                }, index * 300); // █ü╪▒ ┘à┘ä┌⌐ 300ms ┌⌐█Æ ┘ü╪▒┘é ┌⌐█Æ ╪│╪º╪¬┌╛
+
+                // ┌⌐┘ä┌⌐ ╪º█î┘ê┘å┘╣
+                el.addEventListener('click', () => openDetail(country.name));
+                
+                mapSection.appendChild(el);
+            });
+        }
+
+        // ╪¬┘ü╪╡█î┘ä ┌⌐┌╛┘ê┘ä┘å█Æ ┌⌐╪º ┘ü┘å┌⌐╪┤┘å
+        function openDetail(countryName) {
+            modalTitle.innerText = countryName;
+            // █î█ü╪º┌║ ╪ó┘╛ ╪¿╪╣╪» ┘à█î┌║ ┘à╪▓█î╪» ╪¬┘ü╪╡█î┘ä╪º╪¬ ┘ä┌⌐┌╛ ╪│┌⌐╪¬█Æ █ü█î┌║ █î╪º ┌ê█î┘╣╪º ╪¿█î╪│ ╪│█Æ ┘ä█Æ ╪│┌⌐╪¬█Æ █ü█î┌║
+            modalDesc.innerText = `${countryName} ┌⌐█Æ ╪¿╪º╪▒█Æ ┘à█î┌║ ┘à╪▓█î╪» ╪¬┘ü╪╡█î┘ä╪º╪¬█ö █î█ü╪º┌║ ╪ó┘╛ ╪¬╪º╪▒█î╪«╪î ╪½┘é╪º┘ü╪¬╪î ┘à╪╣█î╪┤╪¬ █î╪º ┌⌐┘ê╪ª█î ╪¿┌╛█î ┘à╪╣┘ä┘ê┘à╪º╪¬ ╪»╪▒╪¼ ┌⌐╪▒ ╪│┌⌐╪¬█Æ █ü█î┌║█ö`;
+            
+            modal.classList.add('active');
+        }
+
+        // ╪¬┘ü╪╡█î┘ä ╪¿┘å╪» ┌⌐╪▒┘å█Æ ┌⌐╪º ┘ü┘å┌⌐╪┤┘å
+        function closeDetail() {
+            modal.classList.remove('active');
+        }
+
+        // ┘à╪º╪ñ╪│ ┌⌐█î ┌⌐┘ä┌⌐ ╪│█Æ ╪¿╪º█ü╪▒ ┌⌐╪▒┘å█Æ ┘╛╪▒ ┘à╪º┌ê┘ä ╪¿┘å╪» █ü┘ê (╪ó┘╛╪┤┘å┘ä)
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeDetail();
+            }
+        });
+
+    </script>
+</body>
+</html>
