@@ -4,11 +4,18 @@ export default function ArabicLayout({
     children: React.ReactNode;
 }) {
     return (
-        // یہاں ہم خاص طور پر عربی کے لیے RTL سیٹنگز کر رہے ہیں
-        <div dir="rtl" lang="ar" className="min-h-screen bg-black text-white">
-            {/* اگر آپ عربی کے لیے الگ نیو بار چاہتے ہیں تو یہاں کال کریں */}
+        /* suppressHydrationWarning لگانے سے براؤزر کی کوئی بھی ایکسٹینشن (جیسے Grammarly وغیرہ) 
+          اگر کوڈ میں اپنے ایٹریبیوٹس گھسائے گی، تو نیکسٹ جے ایس کریش نہیں ہوگا اور ایرر غائب ہو جائے گا۔
+        */
+        <div
+            dir="rtl"
+            lang="ar"
+            suppressHydrationWarning={true}
+            className="min-h-screen bg-black text-white"
+        >
+            {/* ہیڈر کا سیکشن */}
             <header>
-                {/* Arabic Navbar Component */}
+                {/* اگر آپ نے مین لے آؤٹ میں پہلے سے ہی نیوبار لگایا ہوا ہے، تو اسے یہاں خالی ہی رہنے دیں */}
             </header>
 
             <main>
@@ -16,7 +23,7 @@ export default function ArabicLayout({
             </main>
 
             <footer>
-                {/* Footer */}
+                {/* یہاں فٹر کا کنٹینٹ آئے گا */}
             </footer>
         </div>
     );

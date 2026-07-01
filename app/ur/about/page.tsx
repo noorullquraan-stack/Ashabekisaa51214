@@ -3,6 +3,9 @@
 const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393066/Markaz-e-Ashab-e-kisa-farsi-ezgif.com-gif-maker_q65doe.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
+// یہاں فیس بک ویڈیو کا لنک ہے
+const facebookVideoUrl = "https://www.facebook.com/alrwdha/videos/1888738388507562";
+
 // یہاں آپ کی یوٹیوب ویڈیوز کی لسٹ ہے
 const youtubeVideos = [
     { title: "مرکزِ اصحابِ کساء عالمی برائے عالمی رہنمائی", url: "https://youtu.be/fD6aF700KqU" },
@@ -119,6 +122,34 @@ export default function UrAboutPage() {
                                 <h4 className="text-zinc-100 font-bold text-sm md:text-base mb-1 text-yellow-400/80">2. انسانی اور فلاحی منصوبے:</h4>
                                 <p className="text-xs md:text-sm text-zinc-400">افریقی خطے میں پانی کا بحران حل کرنے کے لیے سیکڑوں آرٹیشین کنوؤں کی کھدائی، تاکہ محروم بچوں اور خاندانوں کو صاف پانی کی فراہمی ممکن بنائی جا سکے۔</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 🎬 فیس بک ویڈیو کا نیا سیکشن - اینڈ میں */}
+                <div className="w-full border-t border-zinc-900 pt-8 flex flex-col md:flex-row gap-8 items-start bg-zinc-900/10 p-6 rounded-2xl border border-zinc-900">
+                    <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-yellow-400/20 bg-black aspect-video shadow-xl">
+                        <iframe
+                            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(facebookVideoUrl)}&show_text=false&width=560`}
+                            className="w-full h-full"
+                            style={{ border: 'none', overflow: 'hidden' }}
+                            scrolling="no"
+                            allowFullScreen={true}
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        />
+                    </div>
+                    <div className="w-full md:w-1/2 font-serif text-right flex flex-col gap-3">
+                        <h2 className="text-lg md:text-xl font-bold text-yellow-400 border-r-4 border-yellow-500 pr-3 mb-1">
+                            پروگرام "روشنی کی سمت" میں مرکز کا تعارف
+                        </h2>
+                        <p className="text-zinc-300 text-sm md:text-base leading-relaxed">
+                            روضہ مبارک عتبہ حسینیہ مقدسیہ کے جنرل سیکرٹریٹ سے وابستہ مرکز اصحاب الکساء کا تعارف، اس کی کارکردگی کی نوعیت اور اس کی تفصیلات ریڈیو پروگرام (روشنی کی سمت / بإتجاه النور) میں۔
+                        </p>
+                        <div className="text-xs md:text-sm text-zinc-400 flex flex-col gap-1.5 mt-2 bg-zinc-900/50 p-3 rounded-lg border border-zinc-800">
+                            <div><span className="text-yellow-400/90 font-bold">پروگرام کے مہمان:</span> مرکز کے علمی معاون، سماحۃ الشیخ احمد الفتلاوی</div>
+                            <div><span className="text-yellow-400/90 font-bold">میزبانِ پروگرام:</span> لطیف الحسناوی</div>
+                            <div><span className="text-yellow-400/90 font-bold">ریڈیو ڈائریکٹر:</span> قاسم العمیدی</div>
+                            <div><span className="text-yellow-400/90 font-bold">کواآرڈینیشن اور روابط:</span> علی غالی</div>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,9 @@
 const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393034/converted-ezgif.com-gif-maker_jxbcen.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
+// یہاں فیس بک ویڈیو کا لنک ہے
+const facebookVideoUrl = "https://www.facebook.com/alrwdha/videos/1888738388507562";
+
 // یہاں آپ کی یوٹیوب ویڈیوز کی لسٹ ہے
 const youtubeVideos = [
     { title: "مركز أصحاب الكساء للإرشاد الدولي", url: "https://youtu.be/fD6aF700KqU" },
@@ -21,7 +24,7 @@ export default function ArAboutPage() {
                             مركز أصحاب الكساء العالمي للإرشاد الدولي
                         </h1>
                         <p className="text-zinc-400 text-xs md:text-sm font-sans tracking-wider uppercase">
-                            تحت رعاية: العتبة الحسينية المقدسة — كربلاء المقدسة، العلاق
+                            تحت رعاية: العتبة الحسينية المقدسة — كربلاء المقدسة، العراق
                         </p>
                     </div>
 
@@ -141,6 +144,34 @@ export default function ArAboutPage() {
                                     حل أزمة المياه في القارة الأفريقية؛ حيث يقوم المركز بحفر مئات الآبار الارتوازية العذبة (مثل مناطق زوکوجیه وموسسندرا في دولة ساحل العاج) لإنقاذ الأطفال من الأمراض الناتجة عن الجفاف وعطش المحرومين استلهاماً من عطش الإمام الحسين وأخيه أبي الفضل العباس (عليهما السلام)، بالإضافة إلى رعاية ومساعدة العوائل المتعففة مادياً واجتماعياً لتأمين عيش كريم باعتزاز ونبل.
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 🎬 فیس بک ویڈیو کا نیا سیکشن - اینڈ میں */}
+                <div className="w-full border-t border-zinc-900 pt-8 flex flex-col md:flex-row gap-8 items-start bg-zinc-900/10 p-6 rounded-2xl border border-zinc-900">
+                    <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-yellow-400/20 bg-black aspect-video shadow-xl">
+                        <iframe
+                            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(facebookVideoUrl)}&show_text=false&width=560`}
+                            className="w-full h-full"
+                            style={{ border: 'none', overflow: 'hidden' }}
+                            scrolling="no"
+                            allowFullScreen={true}
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        />
+                    </div>
+                    <div className="w-full md:w-1/2 font-serif text-right flex flex-col gap-3">
+                        <h2 className="text-lg md:text-xl font-bold text-yellow-400 border-r-4 border-yellow-500 pr-3 mb-1">
+                            التعريف بالمركز في برنامج (بإتجاه النور)
+                        </h2>
+                        <p className="text-zinc-300 text-sm md:text-base leading-relaxed">
+                            التعريف بمركز #أصحاب_الكساء التابع إلى الأمانة العامة للعتبة الحسينية المقدسة.. ماهية عمله وتفاصيله، في حلقة برنامج (بإتجاه النور).
+                        </p>
+                        <div className="text-xs md:text-sm text-zinc-400 flex flex-col gap-1.5 mt-2 bg-zinc-900/50 p-3 rounded-lg border border-zinc-800">
+                            <div><span className="text-yellow-400/90 font-bold">ضيف الحلقة:</span> المعاون العلمي للمركز سماحة الشيخ احمد الفتلاوي</div>
+                            <div><span className="text-yellow-400/90 font-bold">محاور الحلقة:</span> لطيف الحسناوي</div>
+                            <div><span className="text-yellow-400/90 font-bold">الإخراج الإذاعي:</span> قاسم العميدي</div>
+                            <div><span className="text-yellow-400/90 font-bold">التنسيق والعلاقات:</span> علي غالي</div>
                         </div>
                     </div>
                 </div>
