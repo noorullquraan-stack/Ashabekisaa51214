@@ -3,12 +3,18 @@
 const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393034/converted-ezgif.com-gif-maker_jxbcen.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
+// یہاں آپ کی یوٹیوب ویڈیوز کی لسٹ ہے
+const youtubeVideos = [
+    { title: "مركز أصحاب الكساء للإرشاد الدولي", url: "https://youtu.be/fD6aF700KqU" },
+    { title: "افتتاح المدارس الدينية في قارة افريقيا", url: "https://youtu.be/TPuGFaGI4Lk" }
+];
+
 export default function ArAboutPage() {
     return (
         <div dir="rtl" className="w-full bg-[#0a0a0a] min-h-screen text-zinc-100 p-4 md:p-8 flex flex-col items-center antialiased select-none">
             <div className="w-full max-w-6xl flex flex-col gap-10">
 
-                {/* 👑 الهيدر الرئيسي والقيادة الإدارية */}
+                {/* 👑 مین ٹائٹل - سب سے اوپر */}
                 <div className="w-full border-b border-yellow-400/20 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div className="text-right">
                         <h1 className="font-serif font-bold text-2xl md:text-4xl text-yellow-400 mb-2 leading-tight tracking-wide drop-shadow-[0_2px_10px_rgba(212,175,55,0.2)]">
@@ -22,6 +28,23 @@ export default function ArAboutPage() {
                     <div className="flex flex-col gap-1 bg-zinc-900/60 border border-zinc-800/80 p-3 rounded-xl text-right text-xs font-serif min-w-[240px]">
                         <div><span className="text-yellow-400/90 font-bold">مدير المركز:</span> سماحة الشيخ أحمد رشيد الطرفي <span className="text-[10px] text-zinc-500">(دامت توفيقاته)</span></div>
                         <div><span className="text-yellow-400/90 font-bold">إعداد:</span> قسم الدراسات والبحوث</div>
+                    </div>
+                </div>
+
+                {/* 🎥 یوٹیوب ویڈیوز کا سیکشن - ٹائٹل کے بالکل نیچے */}
+                <div className="w-full border-b border-yellow-400/20 pb-6">
+                    <h2 className="text-xl font-bold text-yellow-400 mb-6 border-r-4 border-yellow-500 pr-3">التقارير المرئية</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {youtubeVideos.map((video, index) => (
+                            <div key={index} className="flex flex-col gap-3">
+                                <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-black aspect-video shadow-lg">
+                                    <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${video.url.split('youtu.be/')[1] || video.url.split('v=')[1]}`} allowFullScreen></iframe>
+                                </div>
+                                <h3 className="text-center font-bold text-yellow-400/90 text-sm md:text-base font-serif">
+                                    {video.title}
+                                </h3>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -66,7 +89,7 @@ export default function ArAboutPage() {
                     <div className="flex flex-col gap-3">
                         <h3 className="text-yellow-400 font-bold text-base md:text-lg border-r-2 border-yellow-500/50 pr-2">من نور المعصومين (عليهم السلام)</h3>
                         <p>
-                            لقد دعا الإمام علي بن موسى الرضا (عليه السلام) بالرحمة للمبلغين الذين يحيون علوم أهل البيت بقوله الشريف: <span className="text-yellow-400 font-bold font-serif">«رَحِمَ اللهُ عَبداً أَحيَا أَمْرَنَا»</span>. وعندما سُئل كيف يحيى أمركم؟ قال عليه السلام: <span className="text-zinc-100 font-bold font-serif">«يَتَعَلَّمُ عُلُومَنَا وَيُعَلِّمُهَا النَّاسَ، فَإِنَّ النَّاسَ لَوْ عَلِمُوا حُسْنَ كَلَامِنَا لَاتَّبَعُونَا»</span>.
+                            لقد دعا الإمام علي بن موسى الرضا (عليه السلام) بالرحمة للمبلغين الذين يحيون علوم أهل البيت بقوله الشريف: «رَحِمَ اللهُ عَبداً أَحيَا أَمْرَنَا». وعندما سُئل كيف يحيى أمركم؟ قال عليه السلام: «يَتَعَلَّمُ عُلُومَنَا وَيُعَلِّمُهَا النَّاسَ، فَإِنَّ النَّاسَ لَوْ عَلِمُوا حُسْنَ كَلَامِنَا لَاتَّبَعُونَا».
                         </p>
                     </div>
                     <div className="flex flex-col gap-3">
@@ -86,7 +109,7 @@ export default function ArAboutPage() {
                         تأسس مركز أصحاب الكساء العالمي للإرشاد الدولي في عام 2016 ميلادي (1437 هجري) كإدارة مستقلة مخلصة بقيادة سماحة الشيخ أحمد الطرفي. ونظراً للكفاءة البالغة والنشاط الميداني المتميز، حظي المركز برعاية كريمة ودعم خاص من المتولي الشرعي للعتبة الحسينية المقدسة سماحة الشيخ عبد المهدي الکربلائي.
                     </p>
                     <p>
-                        وفي أغسطس عام 2022 ميلادي (1444 هجري)، تم ضم المركز رسمياً ليصبح جزءاً لا يتجزأ من الهيكل الإداري والتنظيمي للعتبة الحسينية المقدسة. هذا الاندماج وهب المشاريع أبعاداً دولية أوسع ونفحة من الإتقان والتمكين الحسيني. ويستند المركز في رسالته الإنسانية الشاملة إلى عهد أمير المؤمنين (عليه السلام) الخالد لمالك الأشتر: <span className="text-zinc-100 font-bold italic font-serif">"الناس صنفان: إما أخ لك في الدين أو نظير لك في الخلق"</span>.
+                        وفي أغسطس عام 2022 ميلادي (1444 هجري)، تم ضم المركز رسمياً ليصبح جزءاً لا يتجزأ من الهيكل الإداري والتنظيمي للعتبة الحسينية المقدسة. هذا الاندماج وهب المشاريع أبعاداً دولية أوسع ونفحة من الإتقان والتمكين الحسيني. ويستند المركز في رسالته الإنسانية الشاملة إلى عهد أمير المؤمنين (عليه السلام) الخالد لمالك الأشتر: "الناس صنفان: إما أخ لك في الدين أو نظير لك في الخلق".
                     </p>
                 </div>
 
