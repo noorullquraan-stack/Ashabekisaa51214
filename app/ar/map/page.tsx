@@ -197,5 +197,6 @@ export default function ArabicMapPage() {
                 </div>
             )}
         </div>
+
     );
 }
