@@ -90,4 +90,13 @@ export const translations = {
 };
 
 export type LangKey = keyof typeof translations;
-export type TranslationType = typeof translations.ur;
+
+export type TranslationType = {
+    dir: string;
+    langLabel: string;
+    searchPlaceholder: string;
+    homeText: string;
+    countriesActive: string;
+    fontClass: string;
+    menu: { name: string; href: string; }[];
+};
