@@ -14,10 +14,10 @@ export function LanguageBar({ t }: { t: any }) {
     const pathname = usePathname();
 
     const getDynamicHref = (targetLocale: string) => {
-        if (!pathname || pathname === "/") return `/${targetLocale}/map`;
+        if (!pathname || pathname === "/") return "/";
         const segments = pathname.split("/").filter(Boolean);
-        if (segments.length === 1) {
-            return `/${targetLocale}/map`;
+        if (segments.length <= 1) {
+            return "/";
         }
         const restOfPath = segments.slice(1).join("/");
         return `/${targetLocale}/${restOfPath}`;
