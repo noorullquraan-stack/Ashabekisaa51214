@@ -1,6 +1,6 @@
 "use client";
 
-const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393034/converted-ezgif.com-gif-maker_jxbcen.webm";
+const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393097/Ashabal-Kisaa-ezgif.com-gif-maker_i6xavx.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
 // Facebook Video URL

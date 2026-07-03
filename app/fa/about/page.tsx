@@ -1,6 +1,6 @@
 "use client";
 
-const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393066/Markaz-e-Ashab-e-kisa-farsi-ezgif.com-gif-maker_q65doe.webm";
+const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393085/Markaz-eAshab-e-kisa-farsi-ezgif.com-gif-maker_zgitmz.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
 // لینک ویدیو فیس‌بوک
@@ -143,12 +143,12 @@ export default function FaAboutPage() {
                 {/* 🎬 بخش ویدیو فیس‌بوک در انتهای صفحه */}
                 <div className="w-full border-t border-zinc-900 pt-8 flex flex-col md:flex-row gap-8 items-start bg-zinc-900/10 p-6 rounded-2xl border border-zinc-900">
                     <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-yellow-400/20 bg-black aspect-video shadow-xl">
-                        <iframe 
-                            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(facebookVideoUrl)}&show_text=false&width=560`} 
+                        <iframe
+                            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(facebookVideoUrl)}&show_text=false&width=560`}
                             className="w-full h-full"
-                            style={{ border: 'none', overflow: 'hidden' }} 
-                            scrolling="no" 
-                            allowFullScreen={true} 
+                            style={{ border: 'none', overflow: 'hidden' }}
+                            scrolling="no"
+                            allowFullScreen={true}
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         />
                     </div>
