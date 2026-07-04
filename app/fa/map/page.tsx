@@ -1,101 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type Country = {
-  slug: string;
-  name: string;
-  image: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  details: string;
-  delayClass: string;
-};
+import { countries, type Country } from "./countriesData";
 
 const CANVAS_W = 1920;
 const CANVAS_H = 1080;
-
-const countries: Country[] = [
-  {
-    slug: "tanzania",
-    name: "تانزانیا",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536406/tanzaania_mxtmdw.png",
-    x: 1320,
-    y: 620,
-    width: 360,
-    height: 320,
-    delayClass: "[animation-delay:200ms]",
-    details: "در تانزانیا در شرق آفریقا، جنبش علمی مرکز اصحاب الکساء به اوج شکوفایی و فعالیت‌های مبارک خود رسیده است.",
-  },
-  {
-    slug: "cameroon",
-    name: "کامرون",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536409/kamroon_tu9nrj.png",
-    x: 1070,
-    y: 540,
-    width: 230,
-    height: 240,
-    delayClass: "[animation-delay:600ms]",
-    details: "در مناطق ساحلی و کوهستانی کامرون، شبکه خیریه مرکز به قبایل دورافتاده دسترسی پیدا کرده است.",
-  },
-  {
-    slug: "nigeria",
-    name: "نیجریه",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536412/negeryah_hh8dd9.png",
-    x: 880,
-    y: 580,
-    width: 240,
-    height: 250,
-    delayClass: "[animation-delay:1000ms]",
-    details: "دامنه خدمات مرکز در نیجریه بسیار گسترده است، جایی که موسسات آموزشی فنی برای توانمندسازی جوانان ایجاد شده است.",
-  },
-  {
-    slug: "niger",
-    name: "نیجر",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536410/neger_r5awhc.png",
-    x: 920,
-    y: 250,
-    width: 360,
-    height: 300,
-    delayClass: "[animation-delay:1400ms]",
-    details: "تحت نظارت مرکز اصحاب الکساء، یک شبکه علمی و پروژه‌های خیریه خالص در مناطق محروم نیجر آغاز شده است.",
-  },
-  {
-    slug: "burkina-faso",
-    name: "بورکینافاسو",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536408/borkina-faso_girmvx.png",
-    x: 650,
-    y: 260,
-    width: 220,
-    height: 190,
-    delayClass: "[animation-delay:1800ms]",
-    details: "در بورکینافاسو، مرکز برنامه‌ای پایدار برای حمایت از کودکان یتیم در راستای سنت‌های والای اخلاقی و علمی آغاز کرده است.",
-  },
-  {
-    slug: "cote-divoire",
-    name: "ساحل عاج",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536411/sahil-aaj_btrhlk.png",
-    x: 650,
-    y: 550,
-    width: 205,
-    height: 215,
-    delayClass: "[animation-delay:2200ms]",
-    details: "حسینیت امروز در آن نقاط دوردست که کودکانش از تشنگی می‌پیچند، ایستاده است تا صدها چاه آب زلال حفر کند و به آنان زندگی ببخشد با هدایت مرکز اصحاب الکساء علیهم السلام.",
-  },
-  {
-    slug: "guinea-bissau",
-    name: "گینه بیسائو",
-    image: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1782536408/gena-besao_irnmdy.png",
-    x: 470,
-    y: 460,
-    width: 215,
-    height: 165,
-    delayClass: "[animation-delay:2600ms]",
-    details: "در کشور کوچک گینه بیسائو، مرکز اصحاب الکساء پروژه‌های کوچک توانمندسازی اقتصادی را برای ماهیگیران فقیر و خانواده‌های نیازمند معرفی کرده است.",
-  },
-];
 
 function countryStyle(country: Country) {
   return {
@@ -120,8 +29,10 @@ export default function PersianMapPage() {
   }, []);
 
   return (
-    <div className="w-full bg-black relative flex-1 flex flex-col justify-between [perspective:1500px] p-4 md:p-5">
-      <div dir="ltr" className="flex-1 flex flex-col items-center justify-start pt-2 w-full max-w-full mx-auto relative z-10">
+    <div className="w-full bg-black relative flex-1 flex flex-col justify-between [perspective:1500px] p-4 md:p-5 overflow-hidden">
+
+      {/* 🗺️ مرکزی کینوس نقشہ */}
+      <div className="flex-1 flex flex-col items-center justify-start pt-2 w-full max-w-full mx-auto relative z-10">
         <div className="relative w-[95%] aspect-[1920/1080] max-h-[58vh] [transform-style:preserve-3d] mx-auto bg-[linear-gradient(rgba(212,175,55,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.01)_1px,transparent_1px)] bg-[size:60px_60px]">
           {countries.map((country) => {
             const isHovered = hoveredSlug === country.slug;
@@ -152,15 +63,18 @@ export default function PersianMapPage() {
         </div>
       </div>
 
-      <div className="fixed bottom-36 left-6 md:bottom-40 md:left-10 w-[130px] md:w-[160px] h-[130px] md:h-[160px] z-[30] pointer-events-none select-none flex items-end">
+      {/* 🕌 فکسڈ لوگو - بالکل آپ کی سیٹنگ کے مطابق لاکڈ */}
+      <div className="fixed left-4 z-[35] pointer-events-none select-none flex items-end bottom-[45%] w-[60px] h-[60px] md:bottom-40 md:left-10 md:w-[160px] md:h-[160px]">
         <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781948799/Markazlogo_vima6r.png" className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.2)]" alt="لوگو" draggable={false} />
       </div>
 
-      <div className="fixed bottom-6 -right-10 md:bottom-10 md:-right-16 w-[320px] md:w-[450px] h-[320px] md:h-[450px] z-[30] pointer-events-none select-none flex items-end">
+      {/* 🛡️ فکسڈ گنبد - معمولی سا اوپر کیا گیا ہے (28% سے 32% اور ڈیسک ٹاپ پر 10 سے 12) */}
+      <div className="fixed -right-6 z-[35] pointer-events-none select-none flex items-end bottom-[32%] w-[150px] h-[150px] md:bottom-12 md:-right-16 md:w-[450px] md:h-[450px]">
         <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781946691/gunbad_flag_kkaqvl.png" className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(212,175,55,0.35)]" alt="گنبد" draggable={false} />
       </div>
 
-      <div dir="rtl" className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center mt-auto pb-4 relative z-40">
+      {/* 📍 ممالک کی نیویگیشن پٹی - موبائل پر تھوڑا نیچے کی گئی ہے */}
+      <div className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center mt-auto relative z-50 -top-[30px] -mb-[30px] md:top-auto md:mb-auto md:pb-4">
         <div className="flex items-center gap-1.5 md:gap-3 overflow-x-auto bg-[#1a1a1a]/80 border border-[#D4AF37]/30 p-2 rounded-xl backdrop-blur-md shadow-[0_0_25px_rgba(0,0,0,0.8)] hide-scrollbar w-full justify-start md:justify-center pointer-events-auto">
           {countries.map((country) => {
             const isActive = hoveredSlug === country.slug || activeCountry?.slug === country.slug;
@@ -182,13 +96,13 @@ export default function PersianMapPage() {
         </div>
       </div>
 
-      {/* صرف ٹیکسٹ کے ساتھ پاپ اپ */}
+      {/* پاپ اپ بکس */}
       {activeCountry && (
-        <div dir="rtl" className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md" onClick={() => setActiveCountry(null)}>
-          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#D4AF37]/30 bg-zinc-950 p-6 md:p-8 text-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md" onClick={() => setActiveCountry(null)}>
+          <div dir="rtl" className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#D4AF37]/30 bg-zinc-950 p-6 text-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <button type="button" onClick={() => setActiveCountry(null)} className="absolute left-4 top-4 text-2xl font-bold text-zinc-400 transition-colors hover:text-[#D4AF37]">✕</button>
-            <h3 className="mb-4 md:mb-6 border-b border-zinc-800 pb-3 text-center text-2xl font-bold font-serif text-[#D4AF37] md:text-3xl">{activeCountry.name}</h3>
-            <p className="text-right text-lg md:text-xl leading-relaxed text-white font-medium">{activeCountry.details}</p>
+            <h3 className="mb-4 border-b border-zinc-800 pb-3 text-center text-xl font-bold font-serif text-[#D4AF37] md:text-2xl">{activeCountry.name}</h3>
+            <p className="text-right text-base leading-relaxed text-white font-medium">{activeCountry.details}</p>
           </div>
         </div>
       )}
