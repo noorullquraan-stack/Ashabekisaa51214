@@ -2,8 +2,8 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import { usePathname } from "next/navigation";
-import Navbar from "./components/navbar/Navbar"; // واپس ./ کر دیا
-import Footer from "./components/Footer"; // واپس ./ کر دیا
+import Navbar from "./components/navbar/Navbar"; // آپ کے پراجیکٹ کے حساب سے Navbar ہی رکھا ہے
+import Footer from "./components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -21,11 +21,12 @@ export default function RootLayout({
 
   return (
     <html
-      lang="ur"
+      lang="ar"
       dir="rtl"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-black text-white selection:bg-yellow-500 selection:text-black">
+      {/* 1. Body کو Flex container بنائیں، margin 0 (m-0) اور کم از کم اونچائی 100vh دیں */}
+      <body className="m-0 min-h-screen flex flex-col bg-black text-white selection:bg-yellow-500 selection:text-black overflow-x-hidden">
 
         {/* ہیڈر کا سیکشن */}
         {!isLandingPage && (
@@ -34,14 +35,16 @@ export default function RootLayout({
           </header>
         )}
 
-        {/* مین کنٹینر */}
-        <main className="flex-1 w-full flex flex-col bg-black">
+        {/* 2. Main پر 'flex-[1_0_auto]' لگائیں تاکہ یہ تمام دستیاب جگہ لے لے اور min-h-0 سے سکرولنگ خراب نہ ہو */}
+        <main className="flex-[1_0_auto] w-full flex flex-col bg-black min-h-0">
           {children}
         </main>
 
-        {/* فوٹر کا سیکشن */}
+        {/* 3. Footer کو ایک کنٹینر میں رکھ کر mt-auto دیا ہے تاکہ یہ ہمیشہ نیچے ہی رہے */}
         {!isLandingPage && (
-          <Footer />
+          <footer className="mt-auto w-full">
+            <Footer />
+          </footer>
         )}
       </body>
     </html>

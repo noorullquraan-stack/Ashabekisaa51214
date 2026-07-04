@@ -28,21 +28,21 @@ export default function Navbar() {
     return (
         <header className="w-full bg-black z-50 sticky top-0 border-b border-zinc-800/50 backdrop-blur-md">
             <div dir={t.dir} className="w-full flex flex-col gap-2">
-                <div className="w-full flex items-center justify-between px-4 pt-3">
+                <div className="w-full flex items-center justify-between px-3 md:px-4 pt-3">
 
-                    {/* Left: Language & Search */}
-                    <div className="flex items-center gap-3 w-1/3 justify-start">
+                    {/* Left: Language & Search (موبائل پر 50% جگہ لے گا، ڈیسک ٹاپ پر 33%) */}
+                    <div className="flex items-center gap-2 md:gap-3 w-1/2 md:w-1/3 justify-start">
                         <LanguageBar t={t} />
                         <NavbarSearch t={t} />
                     </div>
 
-                    {/* Center: Logo */}
-                    <div className="flex justify-center w-1/3">
+                    {/* Center / Mobile Right: Logo (موبائل پر کونے میں جائے گا، ڈیسک ٹاپ پر سینٹر میں) */}
+                    <div className="flex justify-end md:justify-center w-1/2 md:w-1/3">
                         <NavbarLogo t={t} currentLang={currentLang} />
                     </div>
 
-                    {/* Right: Social Icons */}
-                    <div className="flex items-center gap-4 w-1/3 justify-end">
+                    {/* Right: Social Icons (صرف ڈیسک ٹاپ پر نظر آئیں گے اور 33% جگہ لیں گے) */}
+                    <div className="hidden md:flex items-center gap-4 w-1/3 justify-end">
                         <SocialIcons t={t} />
                     </div>
                 </div>

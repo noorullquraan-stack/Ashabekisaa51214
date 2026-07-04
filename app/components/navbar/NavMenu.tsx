@@ -22,20 +22,28 @@ export function NavMenu({ t }: { t: TranslationType }) {
         }
     }, [pathname, t.menu]);
 
+    // 🎯 یہ فلٹر نیوز، ویڈیوز اور ڈونیٹ کے لنکس کو عارضی طور پر چھپا دے گا
+    const visibleMenu = t.menu.filter((item) => {
+        const link = item.href.toLowerCase();
+        return !link.includes("news") && !link.includes("videos") && !link.includes("donate");
+    });
+
     return (
         <div className="w-full mt-1 relative flex justify-center pb-2 px-2 overflow-hidden">
-            <div className="flex items-center gap-1.5 md:gap-2 max-w-full overflow-x-auto hide-scrollbar flex-nowrap py-1 px-1 justify-start md:justify-center flex-row">
-                {t.menu.map((item) => {
+            <div className="flex items-center gap-1.5 md:gap-2.5 max-w-full md:overflow-x-auto hide-scrollbar flex-wrap md:flex-nowrap py-1 px-1 justify-center flex-row">
+                {/* t.menu کی جگہ اب visibleMenu استعمال کیا گیا ہے */}
+                {visibleMenu.map((item) => {
                     const isActive = activeMenuItem === item.name;
                     return (
                         <Link
                             key={item.name}
                             href={item.href}
                             onClick={() => setActiveMenuItem(item.name)}
-                            className={`relative py-1.5 transition-all duration-300 rounded-lg whitespace-nowrap ${t.fontClass} ${isActive
-                                ? "text-black bg-yellow-500 border-b-2 border-yellow-600 shadow-[0_2px_10px_rgba(255,215,0,0.3)]"
-                                : "text-zinc-300 bg-zinc-900/40 border border-zinc-800/50 hover:text-white hover:bg-zinc-800 hover:border-yellow-500/50"
-                                }`}
+                            className={`relative px-3 py-1.5 transition-all duration-300 whitespace-nowrap text-center text-[11px] md:text-base ${t.fontClass} ${
+                                isActive
+                                    ? "rounded-lg border border-yellow-500 text-black bg-gradient-to-r from-amber-400 to-yellow-600 shadow-[0_4px_12px_rgba(212,175,55,0.4)] scale-105 z-10 font-bold"
+                                    : "rounded-lg border border-zinc-700 text-[#D4AF37] bg-gradient-to-r from-zinc-800 to-zinc-900 hover:text-yellow-300 hover:border-[#D4AF37]/50 font-semibold shadow-sm"
+                            }`}
                         >
                             <span className="relative z-10">{item.name}</span>
                         </Link>

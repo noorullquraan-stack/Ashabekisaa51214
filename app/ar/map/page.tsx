@@ -63,17 +63,17 @@ export default function ArabicMapPage() {
         </div>
       </div>
 
-      {/* 🕌 فکسڈ لوگو - بالکل آپ کی سیٹنگ کے مطابق لاکڈ */}
+      {/* 🕌 فکسڈ لوگو */}
       <div className="fixed left-4 z-[35] pointer-events-none select-none flex items-end bottom-[45%] w-[60px] h-[60px] md:bottom-40 md:left-10 md:w-[160px] md:h-[160px]">
         <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781948799/Markazlogo_vima6r.png" className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.2)]" alt="لوگو" draggable={false} />
       </div>
 
-      {/* 🛡️ فکسڈ گنبد - معمولی سا اوپر کیا گیا ہے */}
+      {/* 🛡️ فکسڈ گنبد */}
       <div className="fixed -right-6 z-[35] pointer-events-none select-none flex items-end bottom-[32%] w-[150px] h-[150px] md:bottom-12 md:-right-16 md:w-[450px] md:h-[450px]">
         <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781946691/gunbad_flag_kkaqvl.png" className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(212,175,55,0.35)]" alt="گنبد" draggable={false} />
       </div>
 
-      {/* 📍 ممالک کی نیویگیشن پٹی - موبائل پر تھوڑا نیچے کی گئی ہے */}
+      {/* 📍 ممالک کی نیویگیشن پٹی */}
       <div className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center mt-auto relative z-50 -top-[30px] -mb-[30px] md:top-auto md:mb-auto md:pb-4">
         <div className="flex items-center gap-1.5 md:gap-3 overflow-x-auto bg-[#1a1a1a]/80 border border-[#D4AF37]/30 p-2 rounded-xl backdrop-blur-md shadow-[0_0_25px_rgba(0,0,0,0.8)] hide-scrollbar w-full justify-start md:justify-center pointer-events-auto">
           {countries.map((country) => {
