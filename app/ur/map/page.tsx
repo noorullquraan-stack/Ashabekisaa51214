@@ -60,17 +60,17 @@ export default function PersianMapPage() {
               </button>
             );
           })}
+
+          {/* 🕌 فکسڈ لوگو - بالکل آپ کی سیٹنگ کے مطابق لاکڈ */}
+          <div className="absolute left-0 z-[35] pointer-events-none select-none flex items-end bottom-[38%] w-[60px] h-[60px] md:bottom-35 md:left-5 md:w-[160px] md:h-[160px]">
+            <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781948799/Markazlogo_vima6r.png" className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.2)]" alt="لوگو" draggable={false} />
+          </div>
+
+          {/* 🛡️ فکسڈ گنبد - معمولی سا اوپر کیا گیا ہے (28% سے 32% اور ڈیسک ٹاپ پر 10 سے 12) */}
+          <div className="absolute -right-6 z-[35] pointer-events-none select-none flex items-end bottom-[20%] w-[150px] h-[150px] md:bottom-5 md:-right-20 md:w-[450px] md:h-[450px]">
+            <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781946691/gunbad_flag_kkaqvl.png" className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(212,175,55,0.35)]" alt="گنبد" draggable={false} />
+          </div>
         </div>
-      </div>
-
-      {/* 🕌 فکسڈ لوگو - بالکل آپ کی سیٹنگ کے مطابق لاکڈ */}
-      <div className="fixed left-4 z-[35] pointer-events-none select-none flex items-end bottom-[45%] w-[60px] h-[60px] md:bottom-40 md:left-10 md:w-[160px] md:h-[160px]">
-        <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781948799/Markazlogo_vima6r.png" className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.2)]" alt="لوگو" draggable={false} />
-      </div>
-
-      {/* 🛡️ فکسڈ گنبد - معمولی سا اوپر کیا گیا ہے (28% سے 32% اور ڈیسک ٹاپ پر 10 سے 12) */}
-      <div className="fixed -right-6 z-[35] pointer-events-none select-none flex items-end bottom-[32%] w-[150px] h-[150px] md:bottom-12 md:-right-16 md:w-[450px] md:h-[450px]">
-        <img src="https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781946691/gunbad_flag_kkaqvl.png" className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(212,175,55,0.35)]" alt="گنبد" draggable={false} />
       </div>
 
       {/* 📍 ممالک کی نیویگیشن پٹی - موبائل پر تھوڑا نیچے کی گئی ہے */}
@@ -93,6 +93,20 @@ export default function PersianMapPage() {
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* ویڈیو سیکشن */}
+      <div className="w-full max-w-4xl mx-auto px-4 pt-8 pb-4">
+        <h2 dir="rtl" className="text-center text-[#D4AF37] text-lg md:text-xl font-bold font-serif mb-3">
+          مرکز اصحابِ کساء علیہ السلام کے بارے میں جانئے
+        </h2>
+        <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-[#D4AF37]/30 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+          <video
+            src="https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393066/Markaz-e-Ashab-e-kisa-farsi-ezgif.com-gif-maker_q65doe.webm"
+            controls
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
