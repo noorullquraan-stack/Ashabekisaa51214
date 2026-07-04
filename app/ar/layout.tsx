@@ -3,8 +3,10 @@ export default function ArabicLayout({
 }: {
     children: React.ReactNode;
 }) {
-    // صرف dir="rtl" اور lang="ar" سیٹ کرنے کے لیے چھوٹا سا کنٹینر
     return (
+        /* suppressHydrationWarning لگانے سے براؤزر کی کوئی بھی ایکسٹینشن (جیسے Grammarly وغیرہ) 
+          اگر کوڈ میں اپنے ایٹریبیوٹس گھسائے گی، تو نیکسٹ جے ایس کریش نہیں ہوگا اور ایرر غائب ہو جائے گا۔
+        */
         <div
             dir="rtl"
             lang="ar"
