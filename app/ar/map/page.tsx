@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import { countries, type Country } from "./countriesData";
 
 const CANVAS_W = 1920;
@@ -15,18 +16,8 @@ function countryStyle(country: Country) {
   };
 }
 
-const countryBySlug = Object.fromEntries(countries.map((c) => [c.slug, c])) as Record<string, Country>;
-
 export default function ArabicMapPage() {
-  const [activeCountry, setActiveCountry] = useState<Country | null>(null);
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
-
-  useEffect(() => {
-    const slug = new URLSearchParams(window.location.search).get("country");
-    if (slug && countryBySlug[slug]) {
-      setActiveCountry(countryBySlug[slug]);
-    }
-  }, []);
 
   return (
     <div className="w-full bg-black relative flex-1 flex flex-col justify-between [perspective:1500px] p-4 md:p-5 overflow-hidden">
@@ -39,9 +30,9 @@ export default function ArabicMapPage() {
             const isDimmed = hoveredSlug !== null && !isHovered;
 
             return (
-              <button
+              <Link
                 key={country.slug}
-                type="button"
+                href={`/ar/map/${country.slug}`}
                 className="absolute block cursor-pointer border-0 bg-transparent p-0 outline-none select-none transition-all duration-700 ease-out"
                 style={{
                   ...countryStyle(country),
@@ -50,14 +41,13 @@ export default function ArabicMapPage() {
                 }}
                 onMouseEnter={() => setHoveredSlug(country.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
-                onClick={() => setActiveCountry(country)}
               >
                 <div className="relative h-full w-full flex items-center justify-center [transform-style:preserve-3d]">
                   <div className="relative z-10 transition-all duration-500 ease-out will-change-transform" style={{ transform: isHovered ? "scale(1.24) translateZ(60px)" : "scale(1) translateZ(0px)" }}>
-                    <img src={country.image} alt={country.name} draggable={false} className="block h-full w-full select-none object-contain pointer-events-none transition-all duration-500" style={{ filter: isHovered ? "brightness(1.15) drop-shadow(0px 0px 40px #D4AF37) drop-shadow(0px 25px 50px rgba(0,0,0,0.9))" : "brightness(0.95) drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.95))" }} />
+                    <img src={country.image} alt={country.name} draggable={false} className="block h-full w-full select-none object-contain pointer-events-none transition-all duration-50" style={{ filter: isHovered ? "brightness(1.15) drop-shadow(0px 0px 40px #D4AF37) drop-shadow(0px 25px 50px rgba(0,0,0,0.9))" : "brightness(0.95) drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.95))" }} />
                   </div>
                 </div>
-              </button>
+              </Link>
             );
           })}
 
@@ -77,11 +67,11 @@ export default function ArabicMapPage() {
       <div className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center mt-auto relative z-50 -top-[30px] -mb-[30px] md:top-auto md:mb-auto md:pb-4">
         <div className="flex items-center gap-1.5 md:gap-3 overflow-x-auto bg-[#1a1a1a]/80 border border-[#D4AF37]/30 p-2 rounded-xl backdrop-blur-md shadow-[0_0_25px_rgba(0,0,0,0.8)] hide-scrollbar w-full justify-start md:justify-center pointer-events-auto">
           {countries.map((country) => {
-            const isActive = hoveredSlug === country.slug || activeCountry?.slug === country.slug;
+            const isActive = hoveredSlug === country.slug;
             return (
-              <button
+              <Link
                 key={country.slug}
-                onClick={() => setActiveCountry(country)}
+                href={`/ar/map/${country.slug}`}
                 onMouseEnter={() => setHoveredSlug(country.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
                 className={`group relative flex flex-col items-center justify-center min-w-[60px] md:min-w-[75px] h-[60px] md:h-[70px] rounded-lg p-1 transition-all duration-300 ${isActive ? "bg-gradient-to-t from-[#D4AF37]/40 to-transparent border border-[#D4AF37]" : "bg-zinc-900/50 border border-zinc-700"}`}
@@ -90,7 +80,7 @@ export default function ArabicMapPage() {
                   <img src={country.image} alt={country.name} className={`max-h-[25px] max-w-[25px] md:max-h-[30px] md:max-w-[30px] object-contain transition-all duration-500 ease-out z-10 ${isActive ? "scale-[1.3] -translate-y-2" : "group-hover:-translate-y-3 group-hover:scale-[1.5]"}`} draggable={false} />
                 </div>
                 <span className={`text-[9px] md:text-[11px] font-serif mt-0.5 ${isActive ? "text-[#D4AF37] font-bold" : "text-zinc-300"}`}>{country.name}</span>
-              </button>
+              </Link>
             );
           })}
         </div>
@@ -109,17 +99,6 @@ export default function ArabicMapPage() {
           />
         </div>
       </div>
-
-      {/* پاپ اپ بکس */}
-      {activeCountry && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md" onClick={() => setActiveCountry(null)}>
-          <div dir="rtl" className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#D4AF37]/30 bg-zinc-950 p-6 text-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <button type="button" onClick={() => setActiveCountry(null)} className="absolute left-4 top-4 text-2xl font-bold text-zinc-400 transition-colors hover:text-[#D4AF37]">✕</button>
-            <h3 className="mb-4 border-b border-zinc-800 pb-3 text-center text-xl font-bold font-serif text-[#D4AF37] md:text-2xl">{activeCountry.name}</h3>
-            <p className="text-right text-base leading-relaxed text-white font-medium">{activeCountry.details}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
