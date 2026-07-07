@@ -72,7 +72,7 @@ export const countriesData: Record<string, any> = {
     subtitle: "علم اور ولایت کا عظیم افریقی مرکز",
     flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783232995/Nigeria-flag_xupzw3.gif",
     intro: "مغربی افریقہ کا ملک نائیجیریا اپنی کثیر آبادی اور قدرتی وسائل کی بدولت \"افریقہ کا دیو\" (Giant of Africa) کہلاتا ہے۔ یہ افریقہ کی سب سے بڑی معیشت ہے۔ یہاں مسلمانوں کی تعداد کروڑوں میں ہے اور نائیجیریا کے مومنین پوری دنیا میں اپنے عشقِ اہلِ بیت (ع) اور ولایتِ علی (ع) کے بے باک اظہار کے لیے ایک ممتاز حیثیت رکھتے ہیں۔",
-    introImage: null,
+    introImage: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783404025/e7915adc-7bfa-4b65-85e3-d2c62bb50843.png",
     challenges: "چونکہ نائیجیریا میں دینی جذبہ پہلے ہی موجزن ہے، اس لیے مرکز نے یہاں روایتی خطابت سے ایک قدم آگے بڑھ کر \"علمی، تحقیقی اور فکری\" سطح پر کام کرنے کا بیڑا اٹھایا ہے۔",
     challengesImage: null,
     servicesIntro: "نائیجیریا میں ادارے کے اہم ترین علمی اور فکری اقدامات درج ذیل ہیں:",

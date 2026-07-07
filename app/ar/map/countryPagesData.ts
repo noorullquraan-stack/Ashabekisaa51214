@@ -72,7 +72,7 @@ export const countriesData: Record<string, any> = {
     subtitle: "مركز علمي وولائي عظيم لأفريقيا",
     flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783232995/Nigeria-flag_xupzw3.gif",
     intro: "بلد نيجيريا في غرب أفريقيا يُسمى \"عملاق أفريقيا\" بفضل سكانه الكبير والموارد الطبيعية. لديها أكبر اقتصاد في أفريقيا. عدد المسلمين هنا يبلغ ملايين، والمؤمنون في نيجيريا يتمتعون بمنزلة متميزة في جميع أنحاء العالم بفضل إيمانهم الصارم بحب أهل البيت (ع) والولاء لعلو (ع).",
-    introImage: null,
+    introImage: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783404025/e7915adc-7bfa-4b65-85e3-d2c62bb50843.png",
     challenges: "نظرًا لأن الحماس الديني موجود بالفعل في نيجيريا، فقد شرع المركز في العمل على مستوى \"علمي، بحثي وفكري\" بخطوة متقدمة عن الخطابة التقليدية هنا.",
     challengesImage: null,
     servicesIntro: "أهم الأنشطة العلمية والفكرية للمركز في نيجيريا هي كما يلي:",

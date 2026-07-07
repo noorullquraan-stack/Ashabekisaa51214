@@ -72,7 +72,7 @@ export const countriesData: Record<string, any> = {
     subtitle: "A great scientific and wilayah center of Africa",
     flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783232995/Nigeria-flag_xupzw3.gif",
     intro: "The West African country of Nigeria is called the \"Giant of Africa\" due to its large population and natural resources. It has the largest economy in Africa. The number of Muslims here is in the millions, and the believers of Nigeria hold a distinguished position all over the world for their fearless expression of their love for Ahlul Bayt (AS) and their devotion to Ali (AS).",
-    introImage: null,
+    introImage: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783404025/e7915adc-7bfa-4b65-85e3-d2c62bb50843.png",
     challenges: "Since religious enthusiasm is already prevalent in Nigeria, the Center has taken a step beyond traditional preaching here and embarked on work on a \"scientific, research, and intellectual\" level.",
     challengesImage: null,
     servicesIntro: "The most important scientific and intellectual activities of the Center in Nigeria are as follows:",
