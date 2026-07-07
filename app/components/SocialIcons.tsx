@@ -13,36 +13,20 @@ const socialLinks = [
 
 export function SocialIcons({ t }: { t: any }) {
     const pathname = usePathname();
-    const currentLocale = pathname?.split("/").filter(Boolean)[0] || "ur";
-    const safeLang = ["ur", "ar", "fa", "en"].includes(currentLocale) ? currentLocale : "ur";
     
     return (
-        <>
-            <div className="flex items-center gap-1.5">
-                {socialLinks.map((social) => (
-                    <a
-                        key={social.name}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-6.5 h-6.5 rounded-md bg-zinc-900/90 border border-yellow-400/30 flex items-center justify-center text-yellow-400 hover:text-black hover:border-yellow-400 hover:bg-yellow-400 shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-[1px]"
-                    >
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d={social.svgPath} /></svg>
-                    </a>
-                ))}
-            </div>
-
-            <button 
-              onClick={() => {
-                window.location.href = `/${safeLang}/map`;
-              }}
-              className={`group flex items-center gap-1.5 px-3 py-1 rounded-xl bg-zinc-900/60 border border-yellow-400/20 transition-all duration-300 hover:border-yellow-400 hover:bg-zinc-950 ${t.dir === "ltr" ? "flex-row-reverse" : "flex-row"} cursor-pointer`}
-            >
-                <span className={`text-xs font-bold text-yellow-400 transition-colors group-hover:text-white ${t.dir === "ltr" ? "font-sans font-medium" : "font-serif"}`}>{t.homeText}</span>
-                <svg className="w-3.5 h-3.5 text-yellow-400 transition-transform duration-300 group-hover:scale-110 fill-current" viewBox="0 0 20 20">
-                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                </svg>
-            </button>
-        </>
+        <div className="flex items-center gap-1.5">
+            {socialLinks.map((social) => (
+                <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-6.5 h-6.5 rounded-md bg-zinc-900/90 border border-yellow-400/30 flex items-center justify-center text-yellow-400 hover:text-black hover:border-yellow-400 hover:bg-yellow-400 shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out hover:scale-115 hover:-translate-y-[1px]"
+                >
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d={social.svgPath} /></svg>
+                </a>
+            ))}
+        </div>
     );
 }
