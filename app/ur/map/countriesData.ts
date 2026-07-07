@@ -69,7 +69,7 @@ export const countries: Country[] = [
         details: "برکینا فاسو جس میں قوم پرستی اور بھرپور ثقافت ہے جس میں ایک وسیلہ دار اور خوشگوار آبادی ہے۔",
     },
     {
-        slug: "ivory-coast",
+        slug: "cote-divoire",
         name: "آئیوری کوسٹ",
         image: "https://res.cloudinary.com/dmqej8n4z/image/upload/q_auto/f_auto/v1781878497/Iorycast_cibqhj.png",
         x: 650,

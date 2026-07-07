@@ -49,6 +49,27 @@ export default function CountryPage({ params }: { params: Promise<{ country: str
           </div>
         </div>
 
+        {/* Beautiful Video Player Section */}
+        {data.videoUrl && (
+          <section className="space-y-4 bg-[#111111] border border-[#222] p-4 md:p-6 rounded-xl hover:border-[#d4af37]/30 transition-all duration-300">
+            <h2 className="text-[#d4af37] text-lg md:text-xl font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+              {data.videoTitle}
+            </h2>
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-[#d4af37]/20 bg-black group">
+              <video
+                src={data.videoUrl}
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+                preload="metadata"
+                width="100%"
+                height="100%"
+              />
+            </div>
+          </section>
+        )}
+
         {/* Main Content Sections */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
           {/* Introduction */}
