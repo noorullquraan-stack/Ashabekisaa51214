@@ -45,6 +45,58 @@ export const countriesData: Record<string, any> = {
       { id: "4", text: "Spiritual Recitation of the Supplication of Faraj by the Students", url: "#" },
       { id: "5", text: "The Blessed Establishment of Madrasah al-Imam Ja'far al-Sadiq (AS)", url: "#" }
     ]
+  },
+  cameroon: {
+    name: "Republic of Cameroon",
+    subtitle: "A scientific and spiritual center of West Africa",
+    flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783232993/Cameroon-flag_z9lh4b.gif",
+    intro: "Cameroon holds a unique place on the map of Africa, which is why it is called \"Little Africa\". Here you can see almost all cultures and geographical features of Africa (forests, mountains, and plains) together. The people here are extremely eager to acquire education, but the severe lack of resources and modern educational institutions in rural and peripheral areas is a very big obstacle.",
+    introImage: null,
+    challenges: "The fundamental goal of the Center is \"building a new and conscious generation\" to quench the thirst of knowledge in this country and bring the youth in line with modern requirements.",
+    challengesImage: null,
+    servicesIntro: "The most important programs and activities of the Center in Cameroon are as follows:",
+    features: [
+      {
+        icon: "🏫",
+        title: "Establishment of Madrasah al-Habib al-Mustapha (SAW)",
+        desc: "The Center's attention was not limited to big cities only; rather, we established a magnificent middle school called \"Madrasah al-Habib al-Mustapha (peace be upon him and his family)\" in the remote village of Bangourain in the city of Fumban in Cameroon. This institution is a clear proof that the Holy Hussainiya is providing the children of remote villages with modern education along with practical examples of the Prophetic Sunnah (SAW) and ethical values so that these children can become a valuable asset to the society of tomorrow.",
+        images: []
+      }
+    ],
+    links: [
+      { id: "1", text: "Establishment and activities of Madrasah al-Habib al-Mustapha (SAW)", url: "#" }
+    ]
+  },
+  nigeria: {
+    name: "Federal Republic of Nigeria",
+    subtitle: "A great scientific and wilayah center of Africa",
+    flag: "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783232995/Nigeria-flag_xupzw3.gif",
+    intro: "The West African country of Nigeria is called the \"Giant of Africa\" due to its large population and natural resources. It has the largest economy in Africa. The number of Muslims here is in the millions, and the believers of Nigeria hold a distinguished position all over the world for their fearless expression of their love for Ahlul Bayt (AS) and their devotion to Ali (AS).",
+    introImage: null,
+    challenges: "Since religious enthusiasm is already prevalent in Nigeria, the Center has taken a step beyond traditional preaching here and embarked on work on a \"scientific, research, and intellectual\" level.",
+    challengesImage: null,
+    servicesIntro: "The most important scientific and intellectual activities of the Center in Nigeria are as follows:",
+    features: [
+      {
+        icon: "🏛️",
+        title: "Intellectual relations with universities",
+        desc: "The Center's delegation paid a detailed visit to the distinguished \"University of Khatam al-Nabiyyin (peace be upon him and his family)\" in Nigeria. The high scientific level of its professors and students and its excellent organization were praised, and light was shed on the saying of Imam Hussein (peace be upon him) before them: \"Whoever is ready to shed his blood with us, let him travel with us\".",
+        images: [
+          "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783317722/8f970120-ddad-42f3-a9fc-f8084503dbd1.png"
+        ]
+      },
+      {
+        icon: "🏴",
+        title: "Joyful reception upon the arrival of the Hussaini flag (AS)",
+        desc: "When the Center's delegation arrived in Nigeria with the blessed flag of Sayyid al-Shuhada (AS), the sight of the believers' enthusiasm here was breathtaking. The reception they gave to the flag with reverence and kissing is a testament to the fact that the hearts of these people are connected to Karbala.",
+        images: [
+          "https://res.cloudinary.com/dmqej8n4z/image/upload/v1783317705/6d7da61f-50a9-4a8d-bc1e-e4b91afb6fd6.png"
+        ]
+      }
+    ],
+    links: [
+      { id: "1", text: "The magnificent reception of the blessed flag from the shrine of Imam Hussein (AS)", url: "#" },
+      { id: "2", text: "Special visit and session of the University of Khatam al-Nabiyyin (SAW)", url: "#" }
+    ]
   }
-  // You can add niger: { ... }, yemen: { ... }, etc. here in the future
 };
