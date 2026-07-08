@@ -62,9 +62,6 @@ export default function CountryPage({ params }: { params: Promise<{ country: str
                 controls
                 playsInline
                 className="w-full h-full object-contain"
-                preload="metadata"
-                width="100%"
-                height="100%"
               />
             </div>
           </section>

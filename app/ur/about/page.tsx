@@ -1,5 +1,9 @@
 "use client";
 
+const getCloudinaryThumbnail = (videoUrl: string) => {
+    return videoUrl.replace("/video/upload/", "/video/upload/so_5/").replace(/\.(webm|mp4|mov)$/, ".jpg");
+};
+
 const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393066/Markaz-e-Ashab-e-kisa-farsi-ezgif.com-gif-maker_q65doe.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
@@ -8,8 +12,7 @@ const facebookVideoUrl = "https://www.facebook.com/alrwdha/videos/18887383885075
 
 // یہاں آپ کی یوٹیوب ویڈیوز کی لسٹ ہے
 const youtubeVideos = [
-    { title: "مرکزِ اصحابِ کساء عالمی برائے عالمی رہنمائی", url: "https://youtu.be/fD6aF700KqU" },
-    { title: "افریقہ میں دینی مدارس کا قیام", url: "https://youtu.be/TPuGFaGI4Lk" }
+    { title: "محترم شیخ احمد رشید الطرفی، ڈائریکٹر مرکزِ اصحابِ کساء برائے بین الاقوامی رہنمائی / عتبہ حسینیہ مقدسہ کا ادارے کے مقاصد اور فعالیت کے بارے میں بیان۔", url: "https://res.cloudinary.com/dmqej8n4z/video/upload/v1783516284/DirectorMessageurdud-ezgif.com-mp4-to-webm-converter_dgvitf.webm" }
 ];
 
 export default function UrAboutPage() {
@@ -40,8 +43,12 @@ export default function UrAboutPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {youtubeVideos.map((video, index) => (
                             <div key={index} className="flex flex-col gap-3">
-                                <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-black aspect-video shadow-lg">
-                                    <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${video.url.split('youtu.be/')[1] || video.url.split('v=')[1]}`} allowFullScreen></iframe>
+                                <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-zinc-950 aspect-video shadow-lg">
+                                    {index === 0 ? (
+                                        <video src={video.url} poster={getCloudinaryThumbnail(video.url)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
+                                    ) : (
+                                        <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${video.url.split('youtu.be/')[1] || video.url.split('v=')[1]}`} allowFullScreen></iframe>
+                                    )}
                                 </div>
                                 <h3 className="text-center font-bold text-yellow-400/90 text-sm md:text-base font-serif">{video.title}</h3>
                             </div>
@@ -72,7 +79,7 @@ export default function UrAboutPage() {
                             • مرکز کی تعارفی ویڈیو
                         </span>
                         <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-zinc-950 aspect-video shadow-[0_0_40px_rgba(212,175,55,0.12)] hover:border-yellow-400/60 transition-all duration-300">
-                            <video src={introVideoUrl} controls playsInline preload="metadata" className="w-full h-full object-contain bg-black" />
+                            <video src={introVideoUrl} poster={getCloudinaryThumbnail(introVideoUrl)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
                         </div>
                     </div>
                 </div>
@@ -105,7 +112,7 @@ export default function UrAboutPage() {
                             • فلاحی اور سماجی خدمات کی جھلکیاں
                         </span>
                         <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-zinc-950 aspect-video shadow-[0_0_40px_rgba(212,175,55,0.12)] hover:border-yellow-400/60 transition-all duration-300">
-                            <video src={clicksVideoUrl} controls autoPlay muted loop preload="metadata" className="w-full h-full object-contain bg-black" />
+                            <video src={clicksVideoUrl} poster={getCloudinaryThumbnail(clicksVideoUrl)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
                         </div>
                     </div>
 

@@ -1,5 +1,9 @@
 "use client";
 
+const getCloudinaryThumbnail = (videoUrl: string) => {
+    return videoUrl.replace("/video/upload/", "/video/upload/so_5/").replace(/\.(webm|mp4|mov)$/, ".jpg");
+};
+
 const introVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782393097/Ashabal-Kisaa-ezgif.com-gif-maker_i6xavx.webm";
 const clicksVideoUrl = "https://res.cloudinary.com/dmqej8n4z/video/upload/v1782554788/clicks-ezgif.com-gif-to-webm-converter_wgciov.webm";
 
@@ -8,8 +12,7 @@ const facebookVideoUrl = "https://www.facebook.com/alrwdha/videos/18887383885075
 
 // YouTube Videos List
 const youtubeVideos = [
-    { title: "Ashab al-Kisa Center for International Guidance", url: "https://youtu.be/fD6aF700KqU" },
-    { title: "Inauguration of Religious Schools in Africa", url: "https://youtu.be/TPuGFaGI4Lk" }
+    { title: "Statement by Respected Sheikh Ahmed Rasheed Al-Tarfi, Director of the Ashab al-Kisa Center for International Guidance / Imam Hussain Holy Shrine, regarding the organization's objectives and activities", url: "https://res.cloudinary.com/dmqej8n4z/video/upload/v1783517042/Director-message-english_auky7f.webm" }
 ];
 
 export default function EnAboutPage() {
@@ -41,7 +44,11 @@ export default function EnAboutPage() {
                         {youtubeVideos.map((video, index) => (
                             <div key={index} className="flex flex-col gap-3">
                                 <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-black aspect-video shadow-lg">
-                                    <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${video.url.split('youtu.be/')[1] || video.url.split('v=')[1]}`} allowFullScreen></iframe>
+                                    {index === 0 ? (
+                                        <video src={video.url} poster={getCloudinaryThumbnail(video.url)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
+                                    ) : (
+                                        <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${video.url.split('youtu.be/')[1] || video.url.split('v=')[1]}`} allowFullScreen></iframe>
+                                    )}
                                 </div>
                                 <h3 className="text-center font-bold text-yellow-400/90 text-sm md:text-base font-serif">
                                     {video.title}
@@ -74,7 +81,7 @@ export default function EnAboutPage() {
                             • Introductory Center Video
                         </span>
                         <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-zinc-950 aspect-video shadow-[0_0_40px_rgba(212,175,55,0.12)] hover:border-yellow-400/60 transition-all duration-300">
-                            <video src={introVideoUrl} controls playsInline preload="metadata" className="w-full h-full object-contain bg-black" />
+                            <video src={introVideoUrl} poster={getCloudinaryThumbnail(introVideoUrl)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
                         </div>
                     </div>
                 </div>
@@ -115,7 +122,7 @@ export default function EnAboutPage() {
                             • Glimpses of Field and Social Services
                         </span>
                         <div className="w-full rounded-2xl overflow-hidden border border-yellow-400/30 bg-zinc-950 aspect-video shadow-[0_0_40px_rgba(212,175,55,0.12)] hover:border-yellow-400/60 transition-all duration-300">
-                            <video src={clicksVideoUrl} controls autoPlay muted loop preload="metadata" className="w-full h-full object-contain bg-black" />
+                            <video src={clicksVideoUrl} poster={getCloudinaryThumbnail(clicksVideoUrl)} controls playsInline preload="auto" className="w-full h-full object-contain bg-black" />
                         </div>
                     </div>
 
