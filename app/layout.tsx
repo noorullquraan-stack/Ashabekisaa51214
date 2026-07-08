@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { usePathname } from "next/navigation";
 import Navbar from "./components/navbar/Navbar"; // آپ کے پراجیکٹ کے حساب سے Navbar ہی رکھا ہے
 import Footer from "./components/Footer";
+import FloatingButtons from "./components/FloatingButtons";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -46,6 +47,9 @@ export default function RootLayout({
             <Footer />
           </footer>
         )}
+        
+        {/* Floating Buttons */}
+        {!isLandingPage && <FloatingButtons />}
       </body>
     </html>
   );
